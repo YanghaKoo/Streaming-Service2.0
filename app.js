@@ -11,7 +11,7 @@ const listRouter = require("./routes/list");
 
 // template 엔진 설정(pug)
 app.set("view engine", "pug");
-app.set("views", "views");
+app.set("views", "views"); 
 
 // 기본 미들웨어 설정
 app.use(express.json());
