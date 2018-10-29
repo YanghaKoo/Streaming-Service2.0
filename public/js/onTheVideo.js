@@ -1,10 +1,3 @@
-/**
- * Video.js Social Share
- * Created by Justin McCraw for New York Media LLC
- * License information: https://github.com/jmccraw/videojs-socialShare/blob/master/LICENSE
- * Plugin details: https://github.com/jmccraw/videojs-socialShare
- */
-
 (function(videojs) {
   
   
