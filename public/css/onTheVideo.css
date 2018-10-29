@@ -1,0 +1,27 @@
+.vjs-social-share {
+  height: 40px;
+  opacity: 0;
+  position: absolute;
+  right: 30px;
+  text-align: center;
+  top: 70%;
+  -webkit-transition: opacity .3s ease-in-out;
+  transition: opacity .3s ease-in-out;
+  width: auto;
+  z-index: 999;
+}
+.vjs-social-share.is-visible,
+.vjs-social-share:hover {
+  opacity: 1;
+}
+
+.vjs-social-share-link {
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  position: relative;  
+}
+
+.vjs-social-share-link:last-of-type {
+  margin-right: 0;
+}

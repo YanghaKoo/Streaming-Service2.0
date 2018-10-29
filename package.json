@@ -1,0 +1,26 @@
+{
+  "name": "konkuk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "multer": "^1.4.0",
+    "mysql": "^2.16.0",
+    "pug": "^2.0.3",
+    "video.js": "^7.1.0",
+    "videojs-contrib-dash": "^2.10.0",
+    "videojs-flash": "^2.1.1",
+    "videojs-thumbnails": "^1.0.3",
+    "wowza-js-api": "^1.0.0"
+  }
+}

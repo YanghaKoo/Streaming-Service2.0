@@ -1,0 +1,34 @@
+extends ./layout
+block content
+  .wrapper
+    video#vid1.video-js.vjs-default-skin.vjs-big-play-centered(controls='', autoplay, preload='auto', width='1300', height='500', data-setup='')
+      source(src=videoUrl, type='application/dash+xml')
+      //-source(src=videoUrl, type='application/x-mpegURL')    
+  
+  center
+    br 
+    div(href='/rank' class="btn btn-primary" onclick="showRanking()") 
+      b#b 실시간 Ranking 확인
+    div#rank 
+  script(src='../js/onTheVideo.js')
+  script.
+    'use strict';    
+    var video = videojs('vid1');
+    video.starRating();
+
+    function showRanking(){
+      $.get('/rank',function(data){        
+        let table = `<table class='table'><tr><th>Rank</th><th>Video Name</th><th>Score</th></tr>
+        <tr><td>1</td><td>${data[0].name}</td><td>${data[0].value.toFixed(2)}</td></tr>
+        <tr><td>2</td><td>${data[1].name}</td><td>${data[1].value.toFixed(2)}</td></tr>
+        <tr><td>3</td><td>${data[2].name}</td><td>${data[2].value.toFixed(2)}</td></tr>
+        </table>
+        
+        `
+
+        document.getElementById('rank').innerHTML = table
+        document.getElementById('b').innerHTML = "Refresh Ranking"
+      })
+    }
+
+    
