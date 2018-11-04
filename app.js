@@ -24,7 +24,7 @@ app.use("/rank", rankRouter);
 app.use("/play", playRouter);
 app.use("/list", listRouter);
 
-const port = process.env.PORT || 8000
+const port = process.env.PORT || 5000
 
 app.listen(port, (req, res) => {
   console.log(port + " port connected!");

@@ -50,12 +50,12 @@ block content
     
   script.
     "use strict";    
-    var videoUrls = ["http://stream.itsp.kr:1935/itspcamera2/test1/manifest.mpd","http://stream.itsp.kr:1935/itspcamera2/test2/manifest.mpd","http://stream.itsp.kr:1935/itspcamera2/test2/manifest.mpd"]
+    var videoUrls = ["http://stream.itsp.kr:1935/itspcamera2/video1/manifest.mpd","http://stream.itsp.kr:1935/itspcamera2/video2/manifest.mpd","http://stream.itsp.kr:1935/itspcamera2/video3/manifest.mpd"]
     var videoIds = ["video1","video2","video3"]
     
     function thumbnailPlay(videoUrl, videoId, i) {
     var vid = document.getElementsByClassName('vid');    
-    vid[i].addEventListener('click', function (e) {
+    vid[i].addEventListener('mouseover', function (e) {
     
     console.log('Video preview made');
 
