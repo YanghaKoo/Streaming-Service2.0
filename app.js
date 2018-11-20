@@ -4,7 +4,7 @@ const express = require("express");
 const app = express();
 const cors = require('cors')
 
-const indexRouter = require("./routes/index");
+
 const rankRouter = require("./routes/rank");
 const playRouter = require("./routes/play");
 const listRouter = require("./routes/list");
@@ -19,10 +19,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
 app.use(cors())
 
-app.use("/", indexRouter);
 app.use("/rank", rankRouter);
 app.use("/play", playRouter);
 app.use("/list", listRouter);
+
+// main page 접속시 /list url로 이동
+app.get('/', (req,res)=>{
+  res.redirect('/list')
+})
 
 const port = process.env.PORT || 5000
 

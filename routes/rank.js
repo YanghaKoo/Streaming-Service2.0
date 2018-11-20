@@ -5,26 +5,7 @@ const multer = require('multer')
 const upload = multer()
 const conn = require('../config/db')();
 
-
-// 평점 확인
-// router.get('/',(req,res)=>{
-//   let sql = "select * from rating"
-//   conn.query(sql,(err,result)=>{
-    
-//     if(result[0]){
-//     // 평균을 구하는 식
-//     let sum = 0;
-//     for(let i=0; i<result.length; i++){
-//       sum += result[i].rating
-//     }
-//     let average = sum/result.length
-//     res.send(`<h1>${average}</h1>`)
-//     }else{
-//       res.send('<h1>등록된 평점이 없습니다.</h1>')
-//     }
-//   })
-// })
-
+// 평점 평균을 구하는 함수
 function getAvg(results){
   var number = 0
   for(var i in results){
@@ -38,6 +19,7 @@ function getAvg(results){
   return number
 }
 
+// ajax 요청을 받을 랭킹 현황을 return 시켜줌
 router.get('/',(req,res)=>{
   var video1 =0 , video2 = 0, video3 =0  
   var sql = "select * from rating3 where id=?"
@@ -75,9 +57,8 @@ router.get('/',(req,res)=>{
 
 
 
-// 평점 등록
+// 평점 등록 RESTful
 router.post('/',upload.none(), (req,res)=>{
-  // conn.query(sql,req.body.starinput, (err,result)=>{
   if(req.body.rating === '0'){
     res.json({'ret' : 'zeroFail'})
     return;

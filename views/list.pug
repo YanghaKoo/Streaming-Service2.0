@@ -11,8 +11,10 @@ block content
       a.btn.btn-primary.btn-lg.mb-4(href='#', role='button') Learn more
   .container.text-center
     h4.mt-4 Live Videos
-    h3.mb-4 썸네일 이미지의 양쪽 SIDE 부분을 클릭하여 눌러 스트리밍 화면을 미리볼 수 있습니다!
-    .row.fish-img
+    h5.mb-4 썸네일 이미지의 양쪽 SIDE 부분에 마우스를 올려 스트리밍 화면을 미리볼 수 있습니다!
+    
+    // 졸작때는 3개의 비디오를 준비했는데, 추후에 서비스 시에는 반복문을 돌려서 원하는만큼 사용하면 될 것 같습니다.
+    .row
       .col-md-4
         img(src='https://www.todaysshopper.net/wp-content/uploads/2018/06/icon-play-6.png' width="30px")
         h4 Video-1
@@ -21,9 +23,7 @@ block content
           .box
             img.vid(src="https://via.placeholder.com/300x150" width="300px" height="150px")          
           .preview
-        
-            
-
+              
       .col-md-4
         img(src='https://www.todaysshopper.net/wp-content/uploads/2018/06/icon-play-6.png' width="30px")
         h4 Video-2
@@ -48,60 +48,58 @@ block content
             a.box(href=`/play/video1`)          
 
     
+
+  // 썸네일에 mouseover시 비디오를 미리볼 수 있게 해주는 코드입니다.
+  // video 태그와 속성들을 만들어서 추가해 주었다가 mouseout시 없애줍니다.
   script.
     "use strict";    
-    var videoUrls = ["http://stream.itsp.kr:1935/itspcamera2/video1/manifest.mpd","http://stream.itsp.kr:1935/itspcamera2/video2/manifest.mpd","http://stream.itsp.kr:1935/itspcamera2/video3/manifest.mpd"]
+    //- var videoUrls = ["http://stream.itsp.kr:1935/itspcamera2/video1/manifest.mpd","http://stream.itsp.kr:1935/itspcamera2/video2/manifest.mpd","http://stream.itsp.kr:1935/itspcamera2/video3/manifest.mpd"]
+    var videoUrls = ["http://stream.itsp.kr:1935/itspcamera2/myStream/manifest.mpd","http://stream.itsp.kr:1935/itspcamera2/myStream/manifest.mpd","http://stream.itsp.kr:1935/itspcamera2/myStream/manifest.mpd"]
+    
     var videoIds = ["video1","video2","video3"]
-    
-    function thumbnailPlay(videoUrl, videoId, i) {
-    var vid = document.getElementsByClassName('vid');    
-    vid[i].addEventListener('mouseover', function (e) {
-    
-    console.log('Video preview made');
-
-    var video = document.createElement('video');
-    video.setAttribute("id", videoId);
-    video.setAttribute("class", "video-js vjs-default-skin vjs-big-play-centered");
-    var a = document.createAttribute('controls');
-    video.setAttributeNode(a);
-    var a = document.createAttribute('autoplay');
-    video.setAttributeNode(a);
-    var a = document.createAttribute('muted');
-    video.setAttributeNode(a);
-    video.setAttribute("preload", "auto");
-    video.setAttribute("width", "300");
-    video.setAttribute("height", "150");
-    video.setAttribute("data-setup", '{}');
-
-    var source = document.createElement('source');
-    
-    source.setAttribute('src', videoUrls[i]);
-    source.setAttribute('type', "application/dash+xml");
-    video.appendChild(source);
-
-
-    var preview = document.getElementsByClassName('preview');
-    preview[i].appendChild(video);
-    
-    var player = videojs(video);
-
-
-
-    preview[i].addEventListener('mouseout', function (e) {
-      if(preview[i].children[0]){
-        preview[i].removeChild(document.getElementById(videoId));
-      }      
-    });
-
-    
-
-
-
-    });    
-    }
-    
     
     for(var i = 0; i<videoUrls.length; i++){
       thumbnailPlay(videoUrls, videoIds, i);
     }
+
+    function thumbnailPlay(videoUrl, videoId, i) {
+      
+      var vid = document.getElementsByClassName('vid');    
+      vid[i].addEventListener('mouseover', function (e) {
+      
+      console.log('Video preview made');
+
+      // video 태그부터 생성하여 여러가지 속성들을 추가해줍니다.
+      var video = document.createElement('video');
+      video.setAttribute("id", videoId);
+      video.setAttribute("class", "video-js vjs-default-skin vjs-big-play-centered");
+      var a = document.createAttribute('controls');
+      video.setAttributeNode(a);
+      var a = document.createAttribute('autoplay');
+      video.setAttributeNode(a);
+      var a = document.createAttribute('muted');
+      video.setAttributeNode(a);
+      video.setAttribute("preload", "auto");
+      video.setAttribute("width", "300");
+      video.setAttribute("height", "150");
+      video.setAttribute("data-setup", '{}');
+      var source = document.createElement('source');
+      source.setAttribute('src', videoUrls[i]);
+      source.setAttribute('type', "application/dash+xml");
+      video.appendChild(source);
+      var preview = document.getElementsByClassName('preview');
+      preview[i].appendChild(video);
+      var player = videojs(video);
+      
+      // mouseout 시 썸네일 비디오를 없애줍니다.
+      preview[i].addEventListener('mouseout', function (e) {
+        if(preview[i].children[0]){
+          preview[i].removeChild(document.getElementById(videoId));
+        }      
+      });
+      });    
+    } 
+
+
+
   

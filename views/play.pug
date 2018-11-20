@@ -1,10 +1,12 @@
 extends ./layout
 block content
+  // 재생되는 비디오 영역입니다.
   .wrapper
-    video#vid1.video-js.vjs-default-skin.vjs-big-play-centered(controls='', autoplay, preload='auto', width='1300', height='500', data-setup='')
+    video#vid1.video-js.vjs-default-skin.vjs-big-play-centered(controls='', autoplay, preload='auto', width='1300', height='600', data-setup='')
       source(src=videoUrl, type='application/dash+xml')
-      //-source(src=videoUrl, type='application/x-mpegURL')    
   
+
+  // 실시간 랭킹
   center
     br 
     div(href='/rank' class="btn btn-primary" onclick="showRanking()") 
@@ -15,16 +17,16 @@ block content
     'use strict';    
     var video = videojs('vid1');
     video.starRating();
-
+    // 랭킹을 비디오 페이지에서 ajax로 읽어서 표로 표현해주는 부분
     function showRanking(){
       $.get('/rank',function(data){        
-        let table = `<table class='table'><tr><th>Rank</th><th>Video Name</th><th>Score</th></tr>
+        let table = 
+          `<table class='table'><tr><th>Rank</th><th>Video Name</th><th>Score</th></tr>
         <tr><td>1</td><td>${data[0].name}</td><td>${data[0].value.toFixed(2)}</td></tr>
         <tr><td>2</td><td>${data[1].name}</td><td>${data[1].value.toFixed(2)}</td></tr>
         <tr><td>3</td><td>${data[2].name}</td><td>${data[2].value.toFixed(2)}</td></tr>
-        </table>
-        
-        `
+        </table>        
+          `
 
         document.getElementById('rank').innerHTML = table
         document.getElementById('b').innerHTML = "Refresh Ranking"

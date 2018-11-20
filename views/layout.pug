@@ -1,29 +1,32 @@
 doctype html
 html(lang='en', style='font-size: 16px')
-  head
-    
+  head    
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
-    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css', integrity='sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB', crossorigin='anonymous')
 
+    // CSS files
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css', integrity='sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB', crossorigin='anonymous')
     link(href='../videojs/video-js.css', rel='stylesheet') 
     link(href='../css/thumList.css', rel='stylesheet')
     link(href="../css/onTheVideo.css" rel="stylesheet")
 
+    // Videojs
     script(src='../videojs/video.min.js')    
-    script(src='https://code.jquery.com/jquery-3.3.1.min.js')
-    
-    //- script(src='../js/videojs-http-streaming.js')  
-    //- script(src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.14.1/videojs-contrib-hls.min.js")
-    
+
+    // Dash 관련    
     script(src='http://cdn.dashjs.org/latest/dash.all.min.js')
     script(src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-dash/2.10.0/videojs-dash.min.js")
+
+    // Bootstarp 관련
+    script(src='https://code.jquery.com/jquery-3.3.1.min.js')
     script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js', integrity='sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T', crossorigin='anonymous')
     title 졸업작품
     
   body
+    
+    // Nav Bar, 따로 등록된건 아직 없습니다.
     nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-      a.navbar-brand(href='/list') Y.H
+      a.navbar-brand(href='/list') ITSP Streaming
       button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
         span.navbar-toggler-icon
       #navbarSupportedContent.collapse.navbar-collapse
@@ -41,13 +44,11 @@ html(lang='en', style='font-size: 16px')
               a.dropdown-item(href='#') Action
               a.dropdown-item(href='#') Another action
               .dropdown-divider
-              a.dropdown-item(href='#') Something else here
-          
-
+              a.dropdown-item(href='#') Something else here        
     block content       
 
     
-    
+    // 비디오의 list를 보여주는 영역입니다.
     section.form-background.my-5.py-5.text-center
       .container.text-color
         h4.py-4 Live Videos
