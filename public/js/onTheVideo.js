@@ -93,7 +93,7 @@
       var _button;
 
       // 빈별 image
-      var empty = '<img src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/512/star-empty-icon.png" width="40px"/>';
+      var empty = '<img src="https://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/512/star-empty-icon.png" width="40px"/>';
 
       // 5개의 평점 보낼 별 생성 (1~5점)
       _button = document.createElement("a");
@@ -139,7 +139,7 @@
         // 노랑별에서 mouseout 시 모든 별을 빈별로 바꿔줌
         tag.addEventListener("mouseout", function () {
           for (var k = 0; k < 5; k++) {
-            _aside.children[k].children[0].setAttribute('src', 'http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/512/star-empty-icon.png');
+            _aside.children[k].children[0].setAttribute('src', 'https://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/512/star-empty-icon.png');
           }
         });
       };

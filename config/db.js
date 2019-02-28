@@ -1,4 +1,4 @@
-module.exports = function() {
+module.exports = function() {  
   var mysql = require("mysql");
   const conn = mysql.createConnection({
     host: "localhost",

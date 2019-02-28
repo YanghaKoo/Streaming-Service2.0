@@ -21,7 +21,7 @@ block content
         button(type="button" class="btn btn-primary btn-block" onclick="location.href='/play/video1'") 입장하기
         .video
           .box
-            img.vid(src="https://via.placeholder.com/300x150" width="300px" height="150px")          
+            img.vid(src="https://image.flaticon.com/icons/svg/145/145852.svg" width="300px" height="150px")          
           .preview
               
       .col-md-4
@@ -30,7 +30,7 @@ block content
         button(type="button" class="btn btn-primary btn-block" onclick="location.href='/play/video2'") 입장하기
         .video
           .box
-            img.vid(src="https://via.placeholder.com/300x150")
+            img.vid(src="https://image.flaticon.com/icons/svg/145/145862.svg" width="300px" height="150px")
           .preview
           .information
             a.box(href=`/play/video1`)                              
@@ -41,7 +41,7 @@ block content
         button(type="button" class="btn btn-primary btn-block" onclick="location.href='/play/video3'") 입장하기
         .video
           .box
-            img.vid(src="https://via.placeholder.com/300x150")
+            img.vid(src="https://image.flaticon.com/icons/svg/145/145864.svg" width="300px" height="150px")
           .preview
             .vid
           .information
@@ -53,8 +53,8 @@ block content
   // video 태그와 속성들을 만들어서 추가해 주었다가 mouseout시 없애줍니다.
   script.
     "use strict";    
-    //- var videoUrls = ["http://stream.itsp.kr:1935/itspcamera2/video1/manifest.mpd","http://stream.itsp.kr:1935/itspcamera2/video2/manifest.mpd","http://stream.itsp.kr:1935/itspcamera2/video3/manifest.mpd"]
-    var videoUrls = ["http://stream.itsp.kr:1935/itspcamera2/myStream/manifest.mpd","http://stream.itsp.kr:1935/itspcamera2/myStream/manifest.mpd","http://stream.itsp.kr:1935/itspcamera2/myStream/manifest.mpd"]
+    var videoUrls = ["http://stream.itsp.kr:1935/itspcamera2/video1/manifest.mpd","http://stream.itsp.kr:1935/itspcamera2/video1/manifest.mpd","http://stream.itsp.kr:1935/itspcamera2/video3/manifest.mpd"]
+    //- var videoUrls = ["http://stream.itsp.kr:1935/itspcamera2/myStream/manifest.mpd","http://stream.itsp.kr:1935/itspcamera2/myStream/manifest.mpd","http://stream.itsp.kr:1935/itspcamera2/myStream/manifest.mpd"]
     
     var videoIds = ["video1","video2","video3"]
     
